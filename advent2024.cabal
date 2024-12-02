@@ -58,10 +58,10 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules: Public 
+    exposed-modules: Day1 
 
     -- Modules included in this library but not exported.
-    other-modules: Paths_advent2024 FileRead Day1 
+    other-modules: Paths_advent2024 FileRead 
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:

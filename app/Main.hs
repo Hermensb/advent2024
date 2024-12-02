@@ -1,10 +1,11 @@
 module Main where
 
-import Public (total)
+import Day1 (dayOnePartOne)
+
 
 main :: IO ()
 main = do
-  putStrLn "Hello, Haskell!"
-  print (total [3,2,1] [6,5,4])
+  x <- dayOnePartOne "input/day_one_part_one.txt"
+  print x
 
 
