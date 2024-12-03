@@ -1,9 +1,9 @@
 {-# LANGUAGE TupleSections #-}
 
-module Day1 (dayOnePartOne, dayOnePartTwo) where
+module Day1 (d1P1, d1P2) where
 
 import Data.List (sort)
-import FileRead (getWordLines)
+import FileRead (getWordLines, wordLinesToIntegers)
 import Data.Map (fromListWith, member, Map, (!))
 
 space :: [Integer] -> [Integer] -> [Integer]
@@ -14,12 +14,6 @@ abv z = abs (uncurry (-) z)
 
 totalDistance :: [Integer] -> [Integer] -> Integer
 totalDistance x y = sum (space x y)
-
-wordLineToIntegers :: [String] -> [Integer]
-wordLineToIntegers x = [read i :: Integer | i <- x]
-
-wordLinesToIntegers :: [[String]] -> [[Integer]]
-wordLinesToIntegers x = [wordLineToIntegers i | i <- x]
 
 toPairs :: [[Integer]] -> [(Integer, Integer)]
 toPairs input = [(head x, x!!1) | x <- input]
@@ -32,8 +26,8 @@ toListInts inpStr = do
   return (unzip pairs)
 
 
-dayOnePartOne :: String -> IO Integer
-dayOnePartOne inpStr = do
+d1P1 :: String -> IO Integer
+d1P1 inpStr = do
   lsts <- toListInts inpStr
   return (uncurry totalDistance lsts)
 
@@ -48,8 +42,8 @@ getCount i counts
 getSimilarity :: [Integer] -> Map Integer Integer -> Integer
 getSimilarity lst counts = sum [x * (getCount x counts) | x <- lst]
 
-dayOnePartTwo :: String -> IO Integer
-dayOnePartTwo inpStr = do
+d1P2 :: String -> IO Integer
+d1P2 inpStr = do
   lsts <- toListInts inpStr
   let counts = countInts (snd lsts)
   return (getSimilarity (fst lsts) counts)

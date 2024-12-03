@@ -15,3 +15,9 @@ getWordLines :: String -> IO [[String]]
 getWordLines x = do
   lns <- getLines x
   return (linesToWords lns)
+
+wordLineToIntegers :: [String] -> [Integer]
+wordLineToIntegers x = [read i :: Integer | i <- x]
+
+wordLinesToIntegers :: [[String]] -> [[Integer]]
+wordLinesToIntegers x = [wordLineToIntegers i | i <- x]

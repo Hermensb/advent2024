@@ -9,7 +9,7 @@ build-type:      Simple
 extra-doc-files: CHANGELOG.md
 
 library
-    exposed-modules:  Day1
+    exposed-modules:  Day1 Day2
     hs-source-dirs:   src
     other-modules:
         Paths_advent2024
