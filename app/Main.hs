@@ -10,7 +10,7 @@ main :: IO ()
 main = do
   d1 <- dayOnePartOne "input/day_one.txt"
   print (yeet "Day 1, Part 1 Result:" d1)
-  d1_2 <- dayOnePartTwo "input/day_one_t.txt"
+  d1_2 <- dayOnePartTwo "input/day_one.txt"
   print (yeet "Day 1, Part 2 Result:" d1_2)
 
 

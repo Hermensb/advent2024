@@ -4,7 +4,7 @@ module Day1 (dayOnePartOne, dayOnePartTwo) where
 
 import Data.List (sort)
 import FileRead (getWordLines)
-import Data.Map (fromListWith, Map)
+import Data.Map (fromListWith, member, Map, (!))
 
 space :: [Integer] -> [Integer] -> [Integer]
 space x y = [abv i | i <- zip (sort x) (sort y)]
@@ -38,9 +38,18 @@ dayOnePartOne inpStr = do
   return (uncurry totalDistance lsts)
 
 countInts :: [Integer] -> Map Integer Integer
-countInts x = fromListWith (+) ( map (, 1) x)
+countInts x = fromListWith (+) (map (, 1) x)
 
-dayOnePartTwo :: String -> IO (Map Integer Integer)
+getCount :: Integer -> Map Integer Integer -> Integer
+getCount i counts
+  | member i counts = counts!i
+  | otherwise = 0
+
+getSimilarity :: [Integer] -> Map Integer Integer -> Integer
+getSimilarity lst counts = sum [x * (getCount x counts) | x <- lst]
+
+dayOnePartTwo :: String -> IO Integer
 dayOnePartTwo inpStr = do
   lsts <- toListInts inpStr
-  return (countInts (snd lsts))
+  let counts = countInts (snd lsts)
+  return (getSimilarity (fst lsts) counts)
