@@ -40,7 +40,7 @@ dayOnePartOne inpStr = do
 countInts :: [Integer] -> Map Integer Integer
 countInts x = fromListWith (+) ( map (, 1) x)
 
-dayOnePartTwo :: String -> IO Map Integer Integer
+dayOnePartTwo :: String -> IO (Map Integer Integer)
 dayOnePartTwo inpStr = do
   lsts <- toListInts inpStr
   return (countInts (snd lsts))
